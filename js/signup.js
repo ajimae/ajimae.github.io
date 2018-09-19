@@ -42,32 +42,28 @@ const checkOthers = (value, element) => {
         element.style.border = '1px solid #06b506';
     }
 }
-
+console.log(window.location.protocol + '//' + window.location.hostname + '/activity.html');
 const registerUser = (details) => {
     const url = 'https://ajimae.herokuapp.com/api/v1/auth/signup';
-    //const url = 'http://localhost:3000/api/v1/auth/signup';
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
         },
-        body: JSON.stringify(details)    
-    })
-    .then((response) => {
-        console.log(response);
-        response.json();
+        body: JSON.stringify(details) 
     })
     .then((data) => {
-        console.log(data);
         if(data.success) {
-            signupButtonElement.innerHTML = 'Register';
+            signupButtonElement.value = 'Registered';
             signupButtonElement.removeAttribute('disabled');
             successElement.style.color = 'green';
             successElement.style.fontSize = '15px';
             successElement.innerHTML = 'Registration was successful....Redirecting to activity page';
             localStorage.setItem('token', data.token);
             setTimeout(() => {
+                //window.location.href = 
               window.location.href = window.location.protocol + '//' + window.location.hostname + '/activity.html';
+            
             }, 2000);
         }else if(data.error) {
             registerButton.innerHTML = 'Register';
@@ -112,9 +108,9 @@ const checkInput = () => {
         name,
         email,
         username,
-        password
+        password,
+        confirmPass
     }
-    
     registerUser(details);
 }
 
