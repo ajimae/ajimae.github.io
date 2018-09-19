@@ -51,9 +51,6 @@ const registerUser = (details) => {
         },
         body: JSON.stringify(details)
     })
-//    .then((response) => {
-//        response.json();
-//    })
     .then((data) => {
         console.log(data);
         if(data.success) {
@@ -80,7 +77,6 @@ const registerUser = (details) => {
         console.log('Request failed', error);
     });
 }
-
 
 const checkInput = () => {
     errorCount = 0;
