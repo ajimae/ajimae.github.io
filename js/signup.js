@@ -33,7 +33,6 @@ const checkPassword = (password, confirmPass, element1, element2) => {
     }
 }
 
-
 const checkOthers = (value, element) => {
     if(value === '' || !value.replace(/\s/g, '').length) {
         errorCount++;
@@ -42,7 +41,7 @@ const checkOthers = (value, element) => {
         element.style.border = '1px solid #06b506';
     }
 }
-console.log(window.location.protocol + '//' + window.location.hostname + '/activity.html');
+
 const registerUser = (details) => {
     const url = 'https://ajimae.herokuapp.com/api/v1/auth/signup';
     fetch(url, {
@@ -50,10 +49,11 @@ const registerUser = (details) => {
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
         },
-        body: JSON.stringify(details) 
+        body: JSON.stringify(details)
     })
     .then((data) => {
-        console.log(data);
+        console.log(data.success);
+        data.json();
         if(data.success) {
             console.log(data.success);
             signupButtonElement.value = 'Registered';
@@ -65,9 +65,9 @@ const registerUser = (details) => {
             localStorage.setItem('token', data.token);
             setTimeout(() => {
               window.location.href = window.location.protocol + '//' + window.location.hostname + '/activity.html';
-            
             }, 2000);
         }else if(data.error) {
+            console.log(data.error);
             registerButton.value = 'Sign Up';
             registerButton.removeAttribute('disabled');
             successElement.style.color = 'red';
@@ -104,7 +104,7 @@ const checkInput = () => {
     }
     
     signupButtonElement.setAttribute('disabled', '');
-    signupButtonElement.value = 'Creating Account';
+    signupButtonElement.value = 'Creating Account...';
     
     const details = {
         name,
