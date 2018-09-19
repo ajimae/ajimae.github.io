@@ -51,11 +51,6 @@ const registerUser = (details) => {
         },
         body: JSON.stringify(details)
     })
-    .then((response) => {
-        console.log('json'+response.json());
-        console.log("Raw"+response);
-        response.json();
-    })
     .then((data) => {
         if(data.success) {
             signupButtonElement.value = 'Registered';
