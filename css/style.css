@@ -215,10 +215,11 @@ input[type="password"], input[type="email"], input[type="text"] {
     margin-top: 10px;
     padding: 5px;
     border-radius: 5px;
+    color: #fff;
     background: rgba(145, 145, 145, 0.2);
 }
 input[type="submit"] {
-    background: rgb(44, 54, 80);
+    background: rgb(148, 171, 230);
     font-size: 14px;
     text-decoration: none;
     color: #fff;
