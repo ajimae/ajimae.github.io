@@ -64,7 +64,7 @@ const registerUser = (details) => {
             setTimeout(() => {
                 console.log("Redirecting...");
                 window.location.href = window.location.protocol + '//' + window.location.hostname + '/activity.html';
-            }, 2000);
+            }, 3000);
         }else if(data.error) {
             console.log(data.error);
             signupButtonElement.value = 'Sign Up';
