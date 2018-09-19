@@ -51,8 +51,8 @@ const registerUser = (details) => {
         },
         body: JSON.stringify(details)
     })
-    .then((data) => {
-        console.log(data.json());
+    .then(response => response.json()).then((data) => {
+        console.log(data);
         if(data.success) {
             signupButtonElement.value = 'Registered';
             signupButtonElement.removeAttribute('disabled');
