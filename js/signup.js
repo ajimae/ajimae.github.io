@@ -52,8 +52,8 @@ const registerUser = (details) => {
         body: JSON.stringify(details)
     })
     .then((data) => {
+        console.log(data);
         if(data.success) {
-            console.log(data.success);
             signupButtonElement.value = 'Registered';
             signupButtonElement.removeAttribute('disabled');
             successElement.style.color = 'green';
@@ -62,7 +62,8 @@ const registerUser = (details) => {
             successElement.innerHTML = 'Registration was successful....Redirecting to activity page';
             localStorage.setItem('token', data.token);
             setTimeout(() => {
-              window.location.href = window.location.protocol + '//' + window.location.hostname + '/activity.html';
+                console.log("Redirecting...");
+                window.location.href = window.location.protocol + '//' + window.location.hostname + '/activity.html';
             }, 2000);
         }else if(data.error) {
             console.log(data.error);
