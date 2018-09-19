@@ -67,8 +67,8 @@ const registerUser = (details) => {
             }, 2000);
         }else if(data.error) {
             console.log(data.error);
-            registerButton.value = 'Sign Up';
-            registerButton.removeAttribute('disabled');
+            signupButtonElement.value = 'Sign Up';
+            signupButtonElement.removeAttribute('disabled');
             successElement.style.color = 'red';
             successElement.style.fontSize = '15px';
             successElement.innerHTML = data.error;
