@@ -60,6 +60,7 @@ const registerUser = (details) => {
             signupButtonElement.removeAttribute('disabled');
             successElement.style.color = 'green';
             successElement.style.fontSize = '15px';
+            successElement.style.display = 'block';
             successElement.innerHTML = 'Registration was successful....Redirecting to activity page';
             localStorage.setItem('token', data.token);
             setTimeout(() => {
@@ -67,7 +68,7 @@ const registerUser = (details) => {
             
             }, 2000);
         }else if(data.error) {
-            registerButton.innerHTML = 'Register';
+            registerButton.value = 'Sign Up';
             registerButton.removeAttribute('disabled');
             successElement.style.color = 'red';
             successElement.style.fontSize = '15px';
