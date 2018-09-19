@@ -56,7 +56,7 @@ const registerUser = (details) => {
         if(data.success) {
             signupButtonElement.value = 'Registered';
             signupButtonElement.removeAttribute('disabled');
-            successElement.style.color = 'green';
+            successElement.style.color = '#fff';
             successElement.style.fontSize = '15px';
             successElement.style.display = 'block';
             successElement.innerHTML = 'Registration was successful....Redirecting to activity page';
