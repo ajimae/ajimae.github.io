@@ -56,13 +56,13 @@ const registerUser = (details) => {
         if(data.success) {
             signupButtonElement.value = 'Registered';
             signupButtonElement.removeAttribute('disabled');
+            successElement.style.display = 'block';
             successElement.style.color = '#fff';
             successElement.style.fontSize = '15px';
-            successElement.style.display = 'block';
             successElement.innerHTML = 'Registration was successful....Redirecting to activity page';
             localStorage.setItem('token', data.token);
             setTimeout(() => {
-                console.log("Redirecting...");
+                successElement.innerHTML = 'Redirecting...';
                 window.location.href = window.location.protocol + '//' + window.location.hostname + '/activity.html';
             }, 3000);
         }else if(data.error) {
