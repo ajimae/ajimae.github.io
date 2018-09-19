@@ -69,6 +69,7 @@ const checkInput = () => {
     errorCount = 0;
     const email = emailElement.value;
     const password = passwordElement.value;
+    console.log(email+" "+password);
     
     checkEmail(email, emailElement);
     checkOthers(password, passwordElement);
