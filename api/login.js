@@ -69,7 +69,6 @@ const checkInput = () => {
     errorCount = 0;
     const email = emailElement.value;
     const password = passwordElement.value;
-    console.log(email+" "+password);
     
     checkEmail(email, emailElement);
     checkOthers(password, passwordElement);
@@ -84,7 +83,7 @@ const checkInput = () => {
     }
     
     signinButtonElement.setAttribute('disabled', '');
-    signinButtonElement.value = 'Creating Account...';
+    signinButtonElement.value = 'Logging in...';
     
     const details = {
         email,
