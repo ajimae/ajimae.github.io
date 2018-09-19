@@ -97,7 +97,7 @@ const checkInput = () => {
     if(errorCount > 0) {
         successElement.style.color = 'red';
         successElement.style.fontSize = '15px';
-        successElement.innerHTML = 'The inputs with red borders are either empty, invalid and/or passwords not matching';
+        successElement.innerHTML = 'The field(s) with red borders are either empty, invalid and/or passwords not matching';
         return false;
     }else {
         successElement.style.display = 'none';
