@@ -51,6 +51,10 @@ const registerUser = (details) => {
         },
         body: JSON.stringify(details)
     })
+    .then((response) => {
+        console.log(response);
+        response.json();
+    })
     .then((data) => {
         console.log(data);
         if(data.success) {
