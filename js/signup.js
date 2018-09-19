@@ -68,6 +68,7 @@ const registerUser = (details) => {
         }else if(data.error) {
             signupButtonElement.removeAttribute('disabled');
             signupButtonElement.value = 'Sign Up';
+            successElement.style.display = 'block';
             successElement.style.color = '#fff';
             successElement.style.fontSize = '15px';
             successElement.innerHTML = data.error;
