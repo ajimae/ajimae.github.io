@@ -66,12 +66,12 @@ const registerUser = (details) => {
                 window.location.href = window.location.protocol + '//' + window.location.hostname + '/activity.html';
             }, 3000);
         }else if(data.error) {
-            console.log(data.error);
             signupButtonElement.value = 'Sign Up';
             signupButtonElement.removeAttribute('disabled');
-            successElement.style.color = 'red';
+            successElement.style.color = '#fff';
             successElement.style.fontSize = '15px';
             successElement.innerHTML = data.error;
+            console.log(data.error);
         }
     }).catch((error) => {
         console.log('Request failed', error);
