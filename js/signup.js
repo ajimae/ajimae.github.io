@@ -51,9 +51,9 @@ const registerUser = (details) => {
         },
         body: JSON.stringify(details)
     })
-    .then((response) => {
-        console.log(response.json());
-    })
+//    .then((response) => {
+//        response.json();
+//    })
     .then((data) => {
         console.log(data);
         if(data.success) {
