@@ -76,7 +76,7 @@ const checkInput = () => {
     if(errorCount > 0) {
         successElement.style.color = 'red';
         successElement.style.fontSize = '15px';
-        successElement.innerHTML = 'The field(s) with red borders are either empty, invalid.';
+        successElement.innerHTML = 'The field(s) with red borders are either empty or invalid.';
         return false;
     }else {
         successElement.style.display = 'none';
