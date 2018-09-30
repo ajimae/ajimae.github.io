@@ -65,7 +65,6 @@ const checkInput = () => {
         successElement.style.color = 'red';
         successElement.style.fontSize = '15px';
         successElement.innerHTML = 'The field(s) with red borders are either empty or invalid.';
-        alert('All field are required.');
         return false;
     }else {
         successElement.style.display = 'none';
