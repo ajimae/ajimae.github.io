@@ -26,8 +26,6 @@ fetch(url, {
             
             let item = `<div class="questions"><p><a href="view.html">${value.title}</a></p></div><footer><div class="status">Posted by <a href="person.html">${value.username}</a>&nbsp;&nbsp;<span class="vote">0 votes</span>&nbsp;&nbsp;<span class="ans">${value.views} Views</span>&nbsp;&nbsp;<span>4 hrs ago</span></div></footer>`;
             
-            console.log(elementDiv);
-            
             elementDiv.innerHTML = item;
             document.getElementById('content').appendChild(elementDiv);
         });
