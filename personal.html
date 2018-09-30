@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html>
 <head>
     <title>Full Screen Landing Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -132,12 +132,14 @@
 	</span>
 	<span class="postQuestions">
 		<h3>Post question</h3><br><br>	
-		<input type="text" placeholder="Title"><br><br>	
+		<input type="text" id="title" placeholder="Title"><br><br>	
 		<textarea id="modify" placeholder="Type question here"></textarea><br>
-		<input type="submit" value="Post question" data-dismiss="modal">
+		<input type="submit" value="Post question" onclick="checkInput()" id="post">
+        <div style="color: black;"><p id="success"></p></div>
 	</span>
 		
 <script src="js/modal.js"></script>
 <script src="js/script.js"></script>
+<script src="api/postQuestion.js"></script>
 </body>
 </html>
