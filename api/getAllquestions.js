@@ -20,16 +20,20 @@ fetch(url, {
     //console.log(data);
     if(data.success) {
         data.Questions.map((value) => {
-//            let elementDiv = document.createElement('div');
-//            elementDiv.setAttribute('class', 'article');
-//            elementDiv.setAttribute('id', 'article');
+            let elementDiv = document.createElement('div');
+            elementDiv.setAttribute('class', 'article');
+            elementDiv.setAttribute('id', 'article');
             
             let item = `<div class="questions"><p><a href="view.html">${value.title}</a></p></div><footer><div class="status">Posted by <a href="person.html">${value.username}</a>&nbsp;&nbsp;<span class="vote">0 votes</span>&nbsp;&nbsp;<span class="ans">${value.views} Views</span>&nbsp;&nbsp;<span>4 hrs ago</span></div></footer>`;
             
-            document.getElementById('article').innerHTML = item;
+            console.log(elementDiv);
             
-            console.log(item);
-            document.getElementsByTagName('main').appendChild(item);
+            //document.getElementById('article').innerHTML = item;
+            let textNode = document.createTextNode(item);
+            elementDiv.appendChild(textNode);
+            
+            //console.log(item);
+            document.getElementById('content').appendChild(elementDiv);
         });
     }else if(data.error) {
         console.log(data.error);
