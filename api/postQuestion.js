@@ -19,7 +19,7 @@ const checkOthers = (value, element) => {
 
 const postQuestion = (details) => {
     const url = 'https://ajimae.herokuapp.com/api/v1/questions';
-    console.log(localStorage.getItem('x-access-token'));
+    console.log(localStorage.getItem('token'));
     fetch(url, {
         method: 'POST',
         headers: {
