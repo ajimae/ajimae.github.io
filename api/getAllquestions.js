@@ -29,10 +29,6 @@ fetch(url, {
             console.log(elementDiv);
             
             elementDiv.innerHTML = item;
-//            let textNode = document.createTextNode(item);
-//            elementDiv.appendChild(textNode);
-            
-            //console.log(item);
             document.getElementById('content').appendChild(elementDiv);
         });
     }else if(data.error) {
