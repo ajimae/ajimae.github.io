@@ -28,9 +28,9 @@ fetch(url, {
             
             console.log(elementDiv);
             
-            //document.getElementById('article').innerHTML = item;
-            let textNode = document.createTextNode(item);
-            elementDiv.appendChild(textNode);
+            elementDiv.innerHTML = item;
+//            let textNode = document.createTextNode(item);
+//            elementDiv.appendChild(textNode);
             
             //console.log(item);
             document.getElementById('content').appendChild(elementDiv);
