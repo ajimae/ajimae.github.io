@@ -32,7 +32,7 @@ const postQuestion = (details) => {
         if(data.success) {
             postButtonElement.removeAttribute('disabled');
             successElement.style.display = 'block';
-            successElement.style.color = '#222';
+            successElement.style.color = '#fff';
             successElement.style.fontSize = '15px';
             successElement.innerHTML = 'Question was posted successful....Redirecting to activity page';
             setTimeout(() => {
@@ -44,7 +44,7 @@ const postQuestion = (details) => {
             postButtonElement.value = 'Sign in';
             successElement.style.display = 'block';
             
-            successElement.style.color = '#222';
+            successElement.style.color = '#fff';
             successElement.style.fontSize = '15px';
             successElement.innerHTML = data.error;
             console.log(data.error);
