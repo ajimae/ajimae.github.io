@@ -77,5 +77,6 @@ const checkInput = () => {
         title,
         description
     }
+    
     postQuestion(details);
 }
