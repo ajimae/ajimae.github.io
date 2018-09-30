@@ -14,7 +14,7 @@ fetch(url, {
                     </head>
                     <article>
                         <h2>Answers</h2>
-                            <ul>`;   
+                            <ul id='answers'>`;   
         document.getElementById('article').innerHTML = item;        
         data.Questions.map((value) => {
             let elementDiv = document.createElement('li');
