@@ -54,6 +54,7 @@ const postQuestion = (details) => {
 }
 
 const checkInput = () => {
+    console.log('seen');
     errorCount = 0;
     const title = titleElement.value;
     const description = descriptionElement.value;
