@@ -1,4 +1,10 @@
-const url = 'https://ajimae.herokuapp.com/api/v1/questions';
+const questionIndex = localStorage.getItem('index');
+const url = `http://ajimae.herokuapp.com/api/v1/questions/${questionIndex}`;
+
+const answerElement = document.getElementById('answer');
+const postBtnElement = document.getElementById('post');
+const successElement = document.getElementById('success');
+
 fetch(url, {
     method: 'GET',
     headers: {
@@ -6,41 +12,109 @@ fetch(url, {
     },
 }).then(response => response.json()).then((data) => {
     if(data.success) {
-        const answers = document.getElementById('answers');
-        let item = `<head>
-                        <h2>${data.title}</h2>
-                        <p>${data.description}</p>
-                        <div class="status">${data.posted_at}&nbsp;&nbsp;&nbsp;06:00 AM</div>
-                    </head>
-                    <article>
-                        <h2>Answers</h2>
-                            <ul id='answers'>`;   
-        document.getElementById('article').innerHTML = item;        
-        data.Questions.map((value) => {
+        document.getElementById('title').innerHTML = data.Question[0].title;
+        
+        document.getElementById('desc').innerHTML = data.Question[0].description;
+        
+        let date = data.Question[0].posted_at.split('T')[0];
+        let time = data.Question[0].posted_at.split('T')[1];
+        //document.querySelector('.status').innerHTML = `${data.Question[0].posted_at}`;
+        
+        document.querySelector('.status').innerHTML = `${date}&nbsp;&nbsp;&nbsp;${time}`;
+        
+        
+        
+            data.Answers.map((value) => {
             let elementDiv = document.createElement('li');
+                
+            console.log(value);
             
-            const items = `<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia asperiores mollitia
-                                minus cum suscipit amet quasi, quos provident ipsa facilis laudantium praesentium.
-                                Consectetur, veritatis enim atque ratione ea, maiores eos repudiandae eius molestias
-                                esse perferendis ipsum at incidunt! Harum, beatae! Lorem ipsum dolor sit amet
-                                consectetur adipisicing elit. Officia asperiores mollitia minus cum suscipit
-                                amet quasi,
-                            </p>`;
-            const footer = `<span><a href="#" ><em class="down-vote">0 Downvote</em></a>&nbsp;<a href="#"><em class="vote">1 Upvote</em>            </a>&nbsp;&nbsp;<a href="person.html"><em>anonymous</em></a></span>
-                            <hr>`;
+            const items = `<p>${value.answer}</p>`;
+            const footer = `<span><a href="#" ><em class="down-vote">${value.downvotes} Downvote</em></a>&nbsp;<a href="#"><em class="vote">${value.upvotes} Upvote</em>            </a>&nbsp;&nbsp;<a href="person.html"><em>${value.username}</em></a></span><hr>`;
+            
+            let elements = `${items}${footer}`;
                             
-            elementDiv.innerHTML = items;
-            answers.appendChild(elementDiv+""+footer);
+            elementDiv.innerHTML = elements;
+            answers.appendChild(elementDiv);
         });
-        const postAnswer = `<h3>Answer</h3>
-                            <textarea placeholder="Type your answer here"></textarea>
-                            <div class="action">
-                                <a href="#">Post Answer</a>
-                            </div>`;
-        document.getElementById('article').appendChild(answers+""+postAnswer);
+        
     }else if(data.error) {
         console.log(data.error);
     }
 }).catch((error) => {
     console.log(error);
 });
+
+const checkInput = () => {
+    errorCount = 0;
+    const answer = answerElement.value;
+    const postButton = postBtnElement.value;
+    
+    checkOthers(answer, answerElement);
+    
+    if(errorCount > 0) {
+        successElement.style.color = 'red';
+        successElement.style.fontSize = '15px';
+        successElement.innerHTML = 'The field(s) with red borders are either empty or invalid.';
+        return false;
+    }else {
+        successElement.style.display = 'none';
+    }
+    
+    postBtnElement.setAttribute('disabled', '');
+    postBtnElement.value = 'Posting...';
+    
+    const answers = {
+        answer
+    }
+    
+    postAnswer(answers);
+}
+
+const checkOthers = (value, element) => {
+    if(value === '' || !value.replace(/\s/g, '').length) {
+        errorCount++;
+        element.style.border = '1px solid #e64a4a';
+    }else {
+        element.style.border = '1px solid #06b506';
+    }
+}
+
+const postAnswer = (answer) => {
+    const url = `https://ajimae.herokuapp.com/api/v1/questions/${questionIndex}/answers`;
+    const token = localStorage.getItem('token');
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'x-access-token': token
+        },
+        body: JSON.stringify(answer)
+    })
+    .then(response => response.json()).then((data) => {
+        console.log(data);
+        if(data.success) {
+            postBtnElement.removeAttribute('disabled');
+            successElement.style.display = 'block';
+            successElement.style.color = '#fff';
+            successElement.style.fontSize = '15px';
+            successElement.innerHTML = 'Posting answer';
+            localStorage.setItem('token', data.token);
+            setTimeout(() => {
+                successElement.innerHTML = 'Successfully posted answer...';
+                window.location.href = window.location.protocol + '//' + window.location.hostname + '/view.html';
+            }, 3000);
+        }else if(data.error) {
+            postBtnElement.removeAttribute('disabled');
+            postBtnElement.value = 'Sign in';
+            successElement.style.display = 'block';
+            
+            successElement.style.color = '#fff';
+            successElement.style.fontSize = '15px';
+            successElement.innerHTML = data.error;
+            console.log(data.error);
+        }
+    }).catch((error) => {
+        console.log('Request failed', error);
+    });
+}
