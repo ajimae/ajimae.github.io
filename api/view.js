@@ -1,5 +1,5 @@
 const questionIndex = localStorage.getItem('index');
-const url = `http://ajimae.herokuapp.com/api/v1/questions/${questionIndex}`;
+const url = `https://ajimae.herokuapp.com/api/v1/questions/${questionIndex}`;
 
 const answerElement = document.getElementById('answer');
 const postBtnElement = document.getElementById('post');
