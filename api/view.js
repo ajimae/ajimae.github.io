@@ -55,7 +55,7 @@ const checkInput = () => {
     if(errorCount > 0) {
         successElement.style.color = 'red';
         successElement.style.fontSize = '15px';
-        successElement.innerHTML = 'The field(s) with red borders are either empty or invalid.';
+        successElement.innerHTML = 'The field with red borders is either empty or invalid.';
         return false;
     }else {
         successElement.style.display = 'none';
@@ -92,13 +92,12 @@ const postAnswer = (answer) => {
         body: JSON.stringify(answer)
     })
     .then(response => response.json()).then((data) => {
-        console.log(data);
         if(data.success) {
             postBtnElement.removeAttribute('disabled');
             successElement.style.display = 'block';
             successElement.style.color = '#fff';
             successElement.style.fontSize = '15px';
-            successElement.innerHTML = 'Posting answer';
+            successElement.innerHTML = 'Posting answer...';
             localStorage.setItem('token', data.token);
             setTimeout(() => {
                 successElement.innerHTML = 'Successfully posted answer...';
@@ -106,7 +105,7 @@ const postAnswer = (answer) => {
             }, 3000);
         }else if(data.error) {
             postBtnElement.removeAttribute('disabled');
-            postBtnElement.value = 'Sign in';
+            postBtnElement.value = 'Post Answer';
             successElement.style.display = 'block';
             
             successElement.style.color = '#fff';
