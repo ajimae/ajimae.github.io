@@ -93,7 +93,8 @@ const postAnswer = (answer) => {
     })
     .then(response => response.json()).then((data) => {
         if(data.success) {
-            postBtnElement.removeAttribute('disabled');
+            
+            document.getElementById('post').style.cursor = 'default';
             successElement.style.display = 'block';
             successElement.style.color = '#fff';
             successElement.style.fontSize = '15px';
