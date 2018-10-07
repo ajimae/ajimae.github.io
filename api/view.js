@@ -106,7 +106,7 @@ const postAnswer = (answer) => {
             }, 3000);
         }else if(data.error) {
             document.getElementById('post').style.cursor = 'default';
-            postBtnElement.value = 'Post Answer';
+            postBtnElement.innerHTML = 'Post Answer';
             successElement.style.display = 'block';
             
             successElement.style.color = '#fff';
