@@ -105,7 +105,7 @@ const postAnswer = (answer) => {
                 window.location.href = window.location.protocol + '//' + window.location.hostname + '/view.html';
             }, 3000);
         }else if(data.error) {
-            postBtnElement.removeAttribute('disabled');
+            document.getElementById('post').style.cursor = 'default';
             postBtnElement.value = 'Post Answer';
             successElement.style.display = 'block';
             
