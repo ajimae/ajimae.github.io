@@ -62,7 +62,6 @@ const checkInput = () => {
     }
     
     document.getElementById('post').style.cursor = 'wait';
-    //postBtnElement.setAttribute('disabled', '');
     postBtnElement.innerHTML = 'Posting...';
     
     const answers = {
