@@ -48,7 +48,7 @@ fetch(url, {
 const checkInput = () => {
     errorCount = 0;
     const answer = answerElement.value;
-    const postButton = postBtnElement.value;
+    const postButton = postBtnElement.innerHTML;
     
     checkOthers(answer, answerElement);
     
@@ -61,8 +61,9 @@ const checkInput = () => {
         successElement.style.display = 'none';
     }
     
-    postBtnElement.setAttribute('disabled', '');
-    postBtnElement.value = 'Posting...';
+    document.getElementById('post').style.cursor = 'not-allowed';
+    //postBtnElement.setAttribute('disabled', '');
+    postBtnElement.innerHTML = 'Posting...';
     
     const answers = {
         answer
