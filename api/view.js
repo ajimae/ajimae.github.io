@@ -61,7 +61,7 @@ const checkInput = () => {
         successElement.style.display = 'none';
     }
     
-    document.getElementById('post').style.cursor = 'not-allowed';
+    document.getElementById('post').style.cursor = 'wait';
     //postBtnElement.setAttribute('disabled', '');
     postBtnElement.innerHTML = 'Posting...';
     
